@@ -1,0 +1,104 @@
+Cursor 
+---------------------------------
+
+
+
+declare
+cursor cl is SELECT * From books;
+begin
+for i in cl loop
+dbms_output.put_line(i.bookno ||' '|| i.booknam ||' '||i.author);
+end loop;
+end;
+
+
+SQL OPERATIONS
+---------------------------------
+
+ CREATE TABLE emp(id number(10),name varchar2(30), salary number(30),token number(10));
+
+ INSERT INTO emb values(1,'Austin',5000,5);
+
+
+BETWEEN
+
+ SELECT * FROM emp where salary BETWEEN 3000 and 5000;
+
+NOT IN
+
+SELECT * FROM emp where token NOT IN(5,2);
+
+IN
+
+SELECT * FROM emp where token  IN(5,2);
+
+
+RENAME
+
+RENAME emp to emp1;
+
+
+Delete
+
+DELETE FROM emp1 where id=3;
+
+
+Create Sequences 
+---------------------------------
+
+CREATE TABLE a5(id number(10),name varchar2(20),dgree varchar2(20));
+
+ Create Sequence S4 increment by 1 start with 1;
+insert into a5 values(S4.nextval,'Austin','BCA');
+
+
+Alter Sequence S4 increment by 2;
+
+insert into a5 values(S4.nextval,'Austin','BCA');
+
+
+
+
+TRIGGER 
+-----------------------
+
+
+
+CREATE OR REPLACE TRIGGER display
+BEFORE UPDATE ON a5
+FOR EACH ROW
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('the old name was: ' || :old.name);
+  DBMS_OUTPUT.PUT_LINE('the new name is: ' || :new.name);
+END;
+/
+
+update a5 set name='Austin' where id=1;
+
+
+
+
+
+
+alter & turncate 
+-------------------------------------
+
+
+ALTER TABLE a5
+ADD  age number(10);
+
+
+ALTER TABLE a5
+MODIFY name varchar2(50);
+
+
+
+SELECT * FROM a5;
+
+TRUNCATE TABLE a5;
+
+ DROP table a5;
+
+
+
+
